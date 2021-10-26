@@ -1,0 +1,73 @@
+<!-- "Unsubscribe" by Asicosilomu. -->
+<!-- Joke page that simulates not being able to unsubscribe from email lists because the code keeps 'forgetting' about other lists you may be subscribed to and adds more checkboxes each time you click Unsubscribe. -->
+<!-- Feel free to share this page with others, but make sure to keep the credits. Please. -->
+<!DOCTYPE html>
+<html style="font-family: Segoe UI, Arial">
+	<head>
+		<title>Unsubscribe</title>
+		<script type="text/javascript">
+		window.addEventListener("load", function () {
+		window.listNo = 1
+		for (let i = 0; i < 10; i++) {
+			var check = document.createElement("input");
+			check.type = "checkbox";
+			check.id = "list" + listNo.toString();
+			check.name = "list" + listNo.toString();
+			check.value = "Email List #" + listNo.toString() + " ​ ";
+			document.getElementById("emailLists").appendChild(check);
+			var label = document.createElement("label");
+			label.for = "list" + listNo.toString();
+			label.innerHTML = "Email List #" + listNo.toString() + " ​ ";
+			document.getElementById("emailLists").appendChild(label);
+			window.listNo = window.listNo + 1
+		}
+		window.listNo = 11
+		});
+		function moreCheckboxes() {
+		document.getElementById("submit").disabled = "disabled"
+		var oofText = "Actually, I think I forgot about some other lists you may be subscribed to.";
+		var index = 1;
+		var textMarquee = setInterval(function() {document.getElementById("title").innerHTML = oofText.substring(0, index);index = index + 1; if(document.getElementById("title").innerHTML == oofText){clearInterval(textMarquee);}}, 50);
+		setTimeout(function(){document.getElementById("title").innerHTML = "Click the email lists you would like to unsubscribe from. We know you're too lazy to click them all!"; document.getElementById("submit").removeAttribute("disabled");}, 5000);
+		var br = document.createElement("br");
+		document.getElementById("emailLists").appendChild(br);
+		for (let i = 0; i < 10; i++) {
+			var check = document.createElement("input");
+			check.type = "checkbox";
+			check.id = "list" + listNo.toString();
+			check.name = "list" + listNo.toString();
+			check.value = "Email List #" + listNo.toString() + " ​ ";
+			document.getElementById("emailLists").appendChild(check);
+			var label = document.createElement("label");
+			label.for = "list" + listNo.toString();
+			label.innerHTML = "Email List #" + listNo.toString() + " ​ ";
+			document.getElementById("emailLists").appendChild(label);
+			window.listNo = window.listNo + 1
+		}
+		}
+		</script>
+		<style type="text/css">
+		.footer {
+			position: fixed;     
+			text-align: center;    
+			bottom: 0px; 
+			width: 100%;
+			background-color: black;
+			color: white;
+		}  
+		</style>
+	</head>
+	<body>
+	<center>
+	<h2 id="title">Click the email lists you would like to unsubscribe from. We know you're too lazy to click them all!</h2>
+	<div id="emailLists">
+	</div>
+	<br>
+	<button id="submit" onclick="moreCheckboxes()">Unsubscribe</button>
+	<br>
+	<br>
+	<br>
+	</center>
+	<div class="footer">Made with love by Asicosilomu</div>
+	</body>
+</html>
